@@ -24,7 +24,7 @@ async function handleAnalyze() {
 
     try {
         //  Adjust this URL for local testing
-        const response = await fetch('http://anish-validator-api.onrender.com/analyze', {
+        const response = await fetch('https://anish-validator-api.onrender.com/analyze', {
             method: 'POST',
             body: formData
         });
