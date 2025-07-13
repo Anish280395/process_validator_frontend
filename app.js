@@ -4,6 +4,7 @@ const analyzeBtn = document.getElementById('analyzeBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 const csvFileInput = document.getElementById('csvFile');
 const breachTableBody = document.querySelector('#breachTable tbody');
+const statusMessage = document.getElementById('statusMessage');
 
 // Event Listeners
 
@@ -38,7 +39,8 @@ async function handleAnalyze() {
         const data = await response.json();
         breachResults = data.breaches;
         renderResults();
-        stausMessage.textContent = "";
+
+        statusMessage.textContent = "";
     } catch (error) {
         statusMessage.textContent = "";
         alert(`Error: ${error.message}`);
