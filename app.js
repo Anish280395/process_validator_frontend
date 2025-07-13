@@ -6,6 +6,7 @@ const csvFileInput = document.getElementById('csvFile');
 const breachTableBody = document.querySelector('#breachTable tbody');
 const statusMessage = document.getElementById('statusMessage');
 const spinner = document.getElementById('spinner');
+const breachTable = document.getElementById('breachTable');
 
 // Event Listeners
 
@@ -27,6 +28,7 @@ async function handleAnalyze() {
     statusMessage.className = "";
     statusMessage.textContent = "Analyzing... Please wait.";
     spinner.style.display = "block";
+    breachChart.style.display = "none";
 
     analyzeBtn.disabled = true;
     analyzeBtn.textContent = "Analyzing...";
@@ -48,12 +50,19 @@ async function handleAnalyze() {
         statusMessage.className = "success";
         statusMessage.textContent = "Analysis completed successfully!";
         spinner.style.display = "none"
-
+        // Handle of chart!
+        if (data.chart) {
+            breachchart.src = "data:image/png;base64," + data.chart;
+            breachChart.style.display = "block";
+        } else {
+            breachChart.style.display = "none";
+        }
 
         analyzeBtn.disabled = false;
         analyzeBtn.textContent = "Analyze Process";
     } catch (error) {
         spinner.style.display = "none";
+        breachChart.style.display = "none";
         statusMessage.className = "error";
         statusMessage.textContext = "Error: ${error.message}";
         analyzeBtn.disabled = false;
