@@ -64,10 +64,10 @@ async function handleAnalyze() {
         spinner.style.display = "none";
         breachChart.style.display = "none";
         statusMessage.className = "error";
-        statusMessage.textContext = "Error: ${error.message}";
+        statusMessage.textContext = `Error: ${error.message}`;
         analyzeBtn.disabled = false;
         analyzeBtn.textContent = "Analyze Process";
-        alert("Error: ${error.message}");
+        alert(`Error: ${error.message}`);
     }
 }
 
