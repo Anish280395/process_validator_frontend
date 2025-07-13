@@ -24,6 +24,7 @@ async function handleAnalyze() {
     const formData = new FormData();
     formData.append('file', file);
 
+    statusMessage.className = "";
     statusMessage.textContent = "Analyzing... Please wait.";
     spinner.style.display = "block";
 
@@ -44,16 +45,20 @@ async function handleAnalyze() {
         breachResults = data.breaches;
         renderResults();
 
+        statusMessage.className = "success";
+        statusMessage.textContent = "Analysis completed successfully!";
         spinner.style.display = "none"
-        statusMessage.textContent = "";
+
+
         analyzeBtn.disabled = false;
         analyzeBtn.textContent = "Analyze Process";
     } catch (error) {
         spinner.style.display = "none";
-        statusMessage.textContent = "";
+        statusMessage.className = "error";
+        statusMessage.textContext = "Error: ${error.message}";
         analyzeBtn.disabled = false;
         analyzeBtn.textContent = "Analyze Process";
-        alert(`Error: ${error.message}`);
+        alert("Error: ${error.message}");
     }
 }
 
