@@ -40,3 +40,11 @@ td {
 th {
     background-color: #eee;
 }
+
+#statusMessage {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d9534f;
+    /* Bootstrap danger color */
+    font-size: 1.1em;
+}
