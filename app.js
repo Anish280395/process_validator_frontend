@@ -38,7 +38,7 @@ async function handleAnalyze() {
         const data = await response.json();
         breachResults = data.breaches;
         renderResults();
-        stausMessage.tectContent = "";
+        stausMessage.textContent = "";
     } catch (error) {
         statusMessage.textContent = "";
         alert(`Error: ${error.message}`);
