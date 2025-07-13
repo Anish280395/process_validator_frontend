@@ -7,6 +7,7 @@ const breachTableBody = document.querySelector('#breachTable tbody');
 const statusMessage = document.getElementById('statusMessage');
 const spinner = document.getElementById('spinner');
 const breachTable = document.getElementById('breachTable');
+const breachChart = document.getElementById('breachChart');
 
 // Event Listeners
 
@@ -52,7 +53,8 @@ async function handleAnalyze() {
         spinner.style.display = "none"
         // Handle of chart!
         if (data.chart) {
-            breachchart.src = "data:image/png;base64," + data.chart;
+
+            breachChart.src = data.chart;
             breachChart.style.display = "block";
         } else {
             breachChart.style.display = "none";
