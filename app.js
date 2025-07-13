@@ -22,6 +22,8 @@ async function handleAnalyze() {
     const formData = new FormData();
     formData.append('file', file);
 
+    statusMessage.textContent = "Analyzing... Please wait.";
+
     try {
         //  Adjust this URL for local testing
         const response = await fetch('https://anish-validator-api.onrender.com/analyze', {
@@ -36,7 +38,9 @@ async function handleAnalyze() {
         const data = await response.json();
         breachResults = data.breaches;
         renderResults();
+        stausMessage.tectContent = "";
     } catch (error) {
+        statusMessage.textContent = "";
         alert(`Error: ${error.message}`);
     }
 }
