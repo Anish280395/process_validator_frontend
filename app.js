@@ -27,6 +27,8 @@ async function handleAnalyze() {
     statusMessage.textContent = "Analyzing... Please wait.";
     spinner.style.display = "block";
 
+    analyzeBtn.disabled = true;
+    analyzeBtn.textContent = "Analyzing...";
     try {
         //  Adjust this URL for local testing
         const response = await fetch('https://anish-validator-api.onrender.com/analyze', {
@@ -44,9 +46,13 @@ async function handleAnalyze() {
 
         spinner.style.display = "none"
         statusMessage.textContent = "";
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = "Analyze Process";
     } catch (error) {
         spinner.style.display = "none";
         statusMessage.textContent = "";
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = "Analyze Process";
         alert(`Error: ${error.message}`);
     }
 }
