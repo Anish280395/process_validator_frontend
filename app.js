@@ -5,6 +5,7 @@ const downloadBtn = document.getElementById('downloadBtn');
 const csvFileInput = document.getElementById('csvFile');
 const breachTableBody = document.querySelector('#breachTable tbody');
 const statusMessage = document.getElementById('statusMessage');
+const spinner = document.getElementById('spinner');
 
 // Event Listeners
 
@@ -24,6 +25,7 @@ async function handleAnalyze() {
     formData.append('file', file);
 
     statusMessage.textContent = "Analyzing... Please wait.";
+    spinner.style.display = "block";
 
     try {
         //  Adjust this URL for local testing
@@ -40,8 +42,10 @@ async function handleAnalyze() {
         breachResults = data.breaches;
         renderResults();
 
+        spinner.style.display = "none"
         statusMessage.textContent = "";
     } catch (error) {
+        spinner.style.display = "none";
         statusMessage.textContent = "";
         alert(`Error: ${error.message}`);
     }

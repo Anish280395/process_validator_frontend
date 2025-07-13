@@ -48,3 +48,8 @@ th {
     /* Bootstrap danger color */
     font-size: 1.1em;
 }
+
+#spinner {
+    margin-top: 10px;
+    text-align: center;
+}
